@@ -92,7 +92,7 @@
 
             try {
                 // Cargar pizzas
-                const responsePizzas = await fetch("/productos/pizzas");
+                const responsePizzas = await fetch("http://52.15.227.168:3000/productos/pizzas");
                 if (!responsePizzas.ok) throw new Error("Error al obtener las pizzas.");
 
                 const pizzas = await responsePizzas.json();
@@ -122,7 +122,7 @@
                 });
 
                 // Cargar especialidades
-                const responseEspecialidades = await fetch("/productos/especialidades");
+                const responseEspecialidades = await fetch("http://52.15.227.168:3000/productos/especialidades");
                 if (!responseEspecialidades.ok) throw new Error("Error al obtener las especialidades.");
 
                 const especialidades = await responseEspecialidades.json();
@@ -162,7 +162,7 @@
             tbodyAdicionales.innerHTML = "";
 
             try {
-                const response = await fetch("/productos/adicionales");
+                const response = await fetch("http://52.15.227.168:3000/productos/adicionales");
                 if (!response.ok) throw new Error("Error al obtener los adicionales.");
 
                 const adicionales = await response.json();
@@ -202,7 +202,7 @@
             tbodyBebidas.innerHTML = "";
 
             try {
-                const response = await fetch("/productos/bebidas");
+                const response = await fetch("http://52.15.227.168:3000/productos/bebidas");
                 if (!response.ok) throw new Error("Error al obtener las bebidas.");
 
                 const bebidas = await response.json();
