@@ -1,0 +1,228 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cuerpo{
+    background-color: lightgray;
+    font-family: 'Neue Aachen Pro', sans-serif;
+}
+
+.cabecera{
+    display: flex;
+    height: 150px;
+    background-color: black;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+li a{
+    text-decoration: none;
+    text-align: right;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+    margin: 20px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+}
+
+.logo img{
+    width: 100px;
+    height: auto;
+}
+
+.logo img:hover{
+    transform: scale(1.20);
+    transition: .3s;
+}
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 20px;
+    align-items: center;
+}
+
+.contenido img{
+    width: 200px;
+}
+
+.pizzas{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    border-radius: 20px;
+}
+
+button{
+    border: none;
+    width: 750px;
+    height: 200px;
+    font-family: 'Neue Aachen Pro', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: black;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    border-radius: 20px;
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    transform: scale(1.10);
+    transition: .3s;
+}
+
+th{
+    padding: 10px;
+}
+
+td{
+    padding: 5px;
+}
+
+#tablaTamaños{
+    text-align: center;
+    width: 700px;
+    height: auto;
+    font-family: 'Neue Aachen Pro', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+    border-collapse: collapse;
+}
+
+#tablaTamaños th{
+    background-color: black;
+    color: white;
+}
+
+
+#tablaCombinaciones{
+    text-align: center;
+    width: 700px;
+    font-family: 'Neue Aachen Pro', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+}
+
+#tablaCombinaciones th{
+    background-color: black;
+    color: white;
+}
+
+#tablaCombinaciones img{
+    width: 150px;
+    border: 1px solid black;
+}
+
+h2{
+    margin: 20px;
+}
+
+
+.adicionales{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    border-radius: 20px;
+}
+
+#tablaAdicionales{
+    text-decoration: none;
+    text-align: center;
+    width: 700px;
+    font-family: 'Neue Aachen Pro', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+}
+
+#tablaAdicionales th{
+    background-color: black;
+    color: white;
+}
+
+#tablaAdicionales img{
+    width: 150px;
+    border: 1px solid black;
+}
+
+.bebidas{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    border-radius: 20px;
+}
+
+#tablaBebidas{
+    text-decoration: none;
+    text-align: center;
+    width: 700px;
+    font-family: 'Neue Aachen Pro', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+}
+
+#tablaBebidas th{
+    background-color: black;
+    color: white;
+}
+
+#pie{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: auto;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: auto;
+}
+
+#pie a img{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80px;
+}
+
+#pie a img:hover{
+    transform: scale(1.20);
+    transition: .3s;
+}
+

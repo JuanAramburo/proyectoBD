@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cuerpo{
+    background-color: lightgray;
+    font-family: 'Neue Aachen Pro', sans-serif;
+}
+
+.cabecera{
+    display: flex;
+    height: 150px;
+    background-color: black;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+li a{
+    text-decoration: none;
+    text-align: right;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+    margin: 20px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+}
+
+.logo img{
+    width: 100px;
+    height: auto;
+}
+
+.logo img:hover{
+    transform: scale(1.20);
+    transition: .3s;
+}
+
+h1{
+    padding: 10px;
+    font-size: 48px;
+}
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    padding: 20px;
+    margin: 10px;
+    width: 500px;
+    color: black;
+    margin: 0 auto;
+}
+
+input{
+    margin: 10px;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+}
+
+#edad{
+    width: 50px;
+}
+
+button{
+    font-family: 'Neue Aachen Pro', sans-serif;
+    background-color: white;
+    width: 90px;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+    transform: scale(1.10);
+    transition: .3s;
+}
+
+#pie{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: auto;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: auto;
+}
+
+#pie a img{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80px;
+}
+
+#pie a img:hover{
+    transform: scale(1.20);
+    transition: .3s;
+}

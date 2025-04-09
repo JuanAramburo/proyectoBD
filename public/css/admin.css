@@ -1,0 +1,218 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.cuerpo{
+    background-color: lightgray;
+    font-family: 'Neue Aachen Pro', sans-serif;
+}
+
+.cabecera{
+    display: flex;
+    height: 150px;
+    background-color: black;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+li a{
+    text-decoration: none;
+    text-align: right;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+    margin: 20px;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+}
+
+.logo img{
+    width: 100px;
+    height: auto;
+}
+
+h1{
+    padding: 10px;
+    font-size: 36px;
+}
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 20px;
+    align-items: center;
+}
+
+.Pizzas{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+h2{
+    margin: 10px;
+}
+
+input{
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+#txtIngredientes{
+    width: 450px;
+}
+
+label{
+    font-size: 20px;
+    margin: 10px;
+}
+
+button{
+    font-family: 'Neue Aachen Pro', sans-serif;
+    background-color: white;
+    width: 90px;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1px 3px 4px rgba(0, 0, 0, 1);
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+    transform: scale(1.10);
+    transition: .3s;
+}
+
+#cerrarSesion{
+    background-color: black;
+    color: white;
+}
+
+#cerrarSesion:hover{
+    background-color: white;
+    color: black;
+    transform: scale(1.30);
+    transition: .3s;
+}
+
+table{
+    width: 600px;
+    margin: 10px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th{
+    background-color: black;
+    color: white;
+}
+
+th, td{
+    padding: 10px;
+    font-weight: 400;
+    border: 1px solid black;
+}
+
+.especialidades{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+#txturl{
+    width: 550px;
+}
+
+.adicionales{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+#txtURL{
+    width: 550px;
+}
+
+.bebidas{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+
+#pie{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: auto;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: auto;
+}
+
+#pie a img{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80px;
+}
+
+#pie a img:hover{
+    transform: scale(1.20);
+    transition: .3s;
+}
