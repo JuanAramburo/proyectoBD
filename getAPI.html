@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <section>
+        <center>
+            <br>
+            <h3>Buscar Informacion del Alumno</h3>
+            <form id="formulario">
+                <select id="alumno">
+                    <option value="">Selecciona un alumno</option>
+                </select>
+
+                <button type="submit" id="btnLeer">Leer</button>
+
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" readonly>
+                
+                <label for="domicilio">Domicilio</label>
+                <input type="text" id="domicilio" name="domicilio" readonly>
+                
+                <label for="edad">Edad</label>
+                <input type="text" id="edad" name="edad" readonly>
+                
+                <label for="sexo">Sexo</label>
+                <input type="text" id="sexo" name="sexo" readonly>
+            </form>
+        </center>
+    </section>
+
+    <script type="module">
+        const alumnoSelect = document.getElementById('alumno');
+        const nom = document.getElementById('nombre');
+        const dom = document.getElementById('domicilio');
+        const eda = document.getElementById('edad');
+        const sex = document.getElementById('sexo');
+        const btnLeer = document.getElementById('btnLeer');
+        const formulario = document.getElementById('formulario');
+
+        formulario.addEventListener('submit', function(event) {
+            event.preventDefault();
+            leer();
+        });
+
+        function cargarAlumnos() {
+        fetch("http://ec2-18-224-78-174.us-east-2.compute.amazonaws.com/api/alumnos")
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(alumnos => {
+                const option = document.createElement('option');
+                option.value = alumnos.id;
+                option.textContent = alumnos.nombre;
+                alumnoSelect.appendChild(option);
+            });
+        })
+        
+        .catch(error => console.error("Error al cargar los alumnos:", error));
+}
+
+
+        function leer(){
+            const alumnoId = alumnoSelect.value;
+            if(alumnoId){
+                console.log("Haciendo fetch para obtener el alumno con ID:", alumnoId);
+                fetch("http://ec2-18-224-78-174.us-east-2.compute.amazonaws.com/api/alumnos/" + alumnoId)
+                    .then(response => {
+                        console.log("Respuesta recibida para el alumno:", response);
+                        if(!response.ok){
+                            throw new Error("Error en la petición: " + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Datos del alumno recibidos:", data);
+                        nom.value = data.nombre || '';
+                        dom.value = data.domicilio || '';
+                        eda.value = data.edad || '';
+                        sex.value = data.sexo || '';
+                    })
+                    .catch(error => {
+                        console.error("Surgió un error en la petición:", error);
+                        alert("Error al obtener los datos del alumno: " + error.message);
+                    });
+            } else {
+                alert("Por favor, selecciona un alumno.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', cargarAlumnos);
+    </script>
+</body>
+</html>

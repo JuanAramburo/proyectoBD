@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/neue-aachen-pro" rel="stylesheet">
+    <link rel="stylesheet" href="/css/productos.css">
+    <link rel="icon" href="/img/logo.png">
+    <title>Productos</title>
+</head>
+<body>
+    <div class="cuerpo">
+        <header class="cabecera">
+            <div class="logo">
+                <a href="/"><img src="/img/logo.jpg" alt=""></a>
+            </div>
+            <nav>
+                <li>
+                    <a href="/">INICIO</a>
+                    <a href="/html/Contacto.html">CONTACTO</a>
+                </li>
+            </nav>
+        </header>
+        <section class="contenido">
+            <div class="pizzas">
+                <button id="btnPizzas">Pizzas</button>
+                <table id="tablaTamaños">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+
+                <table id="tablaCombinaciones">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="adicionales">
+                <button id="btnAdicionales">Adicionales</button>
+                <table id="tablaAdicionales">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="bebidas">
+                <button id="btnBebidas">Bebidas</button>
+                <table id="tablaBebidas">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer id="pie">
+            <h4>Direccion: </h4>
+            <br>
+            <p>Avenida Camarón Sabalo #204 Local 10, Zona Dorada, Centro Comercial Lomas, C.P 82110</p>
+            <br>
+            <h4>Numeros de Contacto: </h4>
+            <br>
+            <p>(669) 913-90-00</p>
+            <br>
+            <p>(669) 269-98-26</p>
+            <br>
+            <a href="https://www.facebook.com/BROTPIZZA"><img src="/img/facebook.webp" alt=""></a>
+            <a href="https://www.instagram.com/brotherspizza_mzt/"><img src="/img/instagram-logo-instagram-icon-transparent-free-png.webp" alt=""></a>
+        </footer>
+    </div>
+    <script>
+        function ocultarTablas(){
+        document.getElementById("tablaTamaños").querySelector("tbody").innerHTML = "";
+        document.getElementById("tablaCombinaciones").querySelector("tbody").innerHTML = "";
+        document.getElementById("tablaAdicionales").querySelector("tbody").innerHTML = "";
+        document.getElementById("tablaBebidas").querySelector("tbody").innerHTML = "";
+        document.getElementById("tablaTamaños").querySelector("thead").innerHTML = "";
+        document.getElementById("tablaCombinaciones").querySelector("thead").innerHTML = "";
+        document.getElementById("tablaAdicionales").querySelector("thead").innerHTML = "";
+        document.getElementById("tablaBebidas").querySelector("thead").innerHTML = "";
+}
+
+        document.getElementById("btnPizzas").addEventListener("click", async () => {
+            ocultarTablas(); // Limpiar las tablas antes de llenarlas
+            const tablaTamaños = document.getElementById("tablaTamaños");
+            const tablaEspecialidades = document.getElementById("tablaCombinaciones");
+            const tbodyTamaños = tablaTamaños.querySelector("tbody");
+            const tbodyEspecialidades = tablaEspecialidades.querySelector("tbody");
+
+            // Limpiar las tablas antes de llenarlas
+            tbodyTamaños.innerHTML = "";
+            tbodyEspecialidades.innerHTML = "";
+
+            try {
+                // Cargar pizzas
+                const responsePizzas = await fetch("/productos/pizzas");
+                if (!responsePizzas.ok) throw new Error("Error al obtener las pizzas.");
+
+                const pizzas = await responsePizzas.json();
+
+                // Generar encabezados para la tabla de tamaños
+                const thTamaños = `
+                    <tr>
+                        <th>Tamaño</th>
+                        <th>Precio 1 ingrediente</th>
+                        <th>Precio 2-4 ingredientes</th>
+                        <th>Precio 5-9 ingredientes</th>
+                    </tr>
+                `;
+                tablaTamaños.querySelector("thead").innerHTML = thTamaños;
+
+                // Generar filas para la tabla de tamaños
+                pizzas.forEach(pizza => {
+                    const row = `
+                        <tr>
+                            <td>${pizza.tamaños}</td>
+                            <td>$${pizza.uno}</td>
+                            <td>$${pizza.dos}</td>
+                            <td>$${pizza.cinco}</td>
+                        </tr>
+                    `;
+                    tbodyTamaños.innerHTML += row;
+                });
+
+                // Cargar especialidades
+                const responseEspecialidades = await fetch("/productos/especialidades");
+                if (!responseEspecialidades.ok) throw new Error("Error al obtener las especialidades.");
+
+                const especialidades = await responseEspecialidades.json();
+
+                // Generar encabezados para la tabla de especialidades
+                const thEspecialidades = `
+                    <tr>
+                        <th>Especialidad</th>
+                        <th>Ingredientes</th>
+                        <th>Imagen</th>
+                    </tr>
+                `;
+                tablaEspecialidades.querySelector("thead").innerHTML = thEspecialidades;
+
+                // Generar filas para la tabla de especialidades
+                especialidades.forEach(especialidad => {
+                    const row = `
+                        <tr>
+                            <td>${especialidad.especialidad}</td>
+                            <td>${especialidad.ingredientes}</td>
+                            <td><img src="${especialidad.urlimg}" alt="Imagen" width="50"></td>
+                        </tr>
+                    `;
+                    tbodyEspecialidades.innerHTML += row;
+                });
+            } catch (error) {
+                console.error(error.message);
+            }
+        });
+
+        document.getElementById("btnAdicionales").addEventListener("click", async () => {
+            ocultarTablas(); // Limpiar las tablas antes de llenarlas
+            const tablaAdicionales = document.getElementById("tablaAdicionales");
+            const tbodyAdicionales = tablaAdicionales.querySelector("tbody");
+
+            // Limpiar la tabla antes de llenarla
+            tbodyAdicionales.innerHTML = "";
+
+            try {
+                const response = await fetch("/productos/adicionales");
+                if (!response.ok) throw new Error("Error al obtener los adicionales.");
+
+                const adicionales = await response.json();
+
+                // Generar encabezados para la tabla de adicionales
+                const thAdicionales = `
+                    <tr>
+                        <th>Adicional</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                    </tr>
+                `;
+                tablaAdicionales.querySelector("thead").innerHTML = thAdicionales;
+
+                // Generar filas para la tabla de adicionales
+                adicionales.forEach(adicional => {
+                    const row = `
+                        <tr>
+                            <td>${adicional.adicional}</td>
+                            <td>$${adicional.precio}</td>
+                            <td><img src="${adicional.urlimag}" alt="Imagen" width="50"></td>
+                        </tr>
+                    `;
+                    tbodyAdicionales.innerHTML += row;
+                });
+            } catch (error) {
+                console.error(error.message);
+            }
+        });
+
+        document.getElementById("btnBebidas").addEventListener("click", async () => {
+            ocultarTablas(); // Limpiar las tablas antes de llenarlas
+            const tablaBebidas = document.getElementById("tablaBebidas");
+            const tbodyBebidas = tablaBebidas.querySelector("tbody");
+
+            // Limpiar la tabla antes de llenarla
+            tbodyBebidas.innerHTML = "";
+
+            try {
+                const response = await fetch("/productos/bebidas");
+                if (!response.ok) throw new Error("Error al obtener las bebidas.");
+
+                const bebidas = await response.json();
+
+                // Generar encabezados para la tabla de bebidas
+                const thBebidas = `
+                    <tr>
+                        <th>Bebida</th>
+                        <th>Precio</th>
+                    </tr>
+                `;
+                tablaBebidas.querySelector("thead").innerHTML = thBebidas;
+
+                // Generar filas para la tabla de bebidas
+                bebidas.forEach(bebida => {
+                    const row = `
+                        <tr>
+                            <td>${bebida.bebida}</td>
+                            <td>$${bebida.precio}</td>
+                        </tr>
+                    `;
+                    tbodyBebidas.innerHTML += row;
+                });
+            } catch (error) {
+                console.error(error.message);
+            }
+        });
+    </script>
+</body>
+</html>

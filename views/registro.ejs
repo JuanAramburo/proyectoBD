@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/neue-aachen-pro" rel="stylesheet">
+    <link rel="stylesheet" href="/css/registro.css">
+    <link rel="icon" href="/img/logo.png">
+    <title>Registrar</title>
+</head>
+<body>
+    <section class="formulario-registro">
+        <h1>Registro</h1>
+        <form id="formularioUsuarios">
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required>
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contraseña" required>
+            <button type="button" id="btnAgregarUsuario">Agregar Usuario</button>
+        </form>
+        <p id="mensajeUsuario"></p>
+        <p>¿Ya tienes una cuenta?</p> <a href="/html/login.html">Iniciar sesion</a>
+      </section>
+      <script>
+        document.getElementById("btnAgregarUsuario").addEventListener("click", async () => {
+    const correo = document.getElementById("correo").value;
+    const contraseña = document.getElementById("contraseña").value;
+
+    const mensaje = document.getElementById("mensajeUsuario");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    if (!correo || !contraseña) {
+        mensaje.textContent = "Por favor, completa todos los campos.";
+        return;
+    }
+
+    try {
+        const response = await fetch("/registro", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ correo, contraseña })
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al agregar el usuario.");
+        }
+
+        mensaje.textContent = "Usuario agregado exitosamente.";
+        document.getElementById("formularioUsuarios").reset(); // Limpiar formulario
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }
+});
+      </script>
+</body>
+</html>

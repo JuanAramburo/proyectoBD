@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link href="https://fonts.cdnfonts.com/css/neue-aachen-pro" rel="stylesheet">
+</head>
+<body>
+    <div class="cuerpo">
+        <header class="cabecera">
+            <div class="logo">
+                <img src="/img/logo.jpg" alt="">
+            </div>
+            <nav>
+                <li>
+                    <button type="submit" id="cerrarSesion">Cerrar Sesión</button>
+                </li>
+            </nav>
+        </header>
+        <section class="contenido">
+            <h1>ADMINISTRADOR</h1>
+
+            <!-- Pizzas -->
+            <div class="Pizzas">
+                <h2>Pizzas</h2>
+                <form id="formularioPizzas">
+                    <br><label for="">ID</label><br><input type="text" name="txtID" id="txtID">
+                    <br><label for="">TAMAÑOS:</label><input type="text" name="txtTamaños" id="txtTamaños">
+                    <h2>Precios</h2>
+                    <br><label for="">1 INGREDIENTE:</label><input type="text" name="txtUNO" id="txtUNO">
+                    <br><label for="">2-4 INGREDIENTES:</label><input type="text" name="txtDOS" id="txtDOS">
+                    <br><label for="">5-9 INGREDIENTES:</label><input type="text" name="txtCINCO" id="txtCINCO">
+                    
+                    <p id="mensajePizzas"></p>
+
+                    <br>
+                    <button type="button" id="btnAnadir">Agregar</button>
+                    <button type="button" id="btnBuscar">Buscar</button>
+                    <button type="button" id="btnActualizar">Actualizar</button>
+                    <button type="button" id="btnBorrar">Eliminar</button>
+                    <button type="reset">Limpiar</button>
+                </form>
+                <table id="tablaTamaños">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tamaño</th>
+                            <th>Precio 1 Ingrediente</th>
+                            <th>Precio 2-4 Ingredientes</th>
+                            <th>Precio 5-9 Ingredientes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (pizzas && pizzas.length > 0) { %>
+                            <% pizzas.forEach(pizza => { %>
+                                <tr>
+                                    <td><%= pizza.idPizzas %></td>
+                                    <td><%= pizza.tamaños %></td>
+                                    <td>$<%= pizza.uno %></td>
+                                    <td>$<%= pizza.dos %></td>
+                                    <td>$<%= pizza.cinco %></td>
+                                </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="5">No hay pizzas registradas</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+            <!-- Especialidades -->
+            <div class="especialidades">
+                <h2>Especialidades</h2>
+                <form id="formularioEspecialidades">
+                    <br><label for="">ID</label><br><input type="text" name="txtId" id="txtId">
+                    <br><label for="">ESPECIALIDAD:</label><input type="text" name="txtEspecialidad" id="txtEspecialidad">
+                    <br><label for="">INGREDIENTES:</label><input type="text" name="txtIngredientes" id="txtIngredientes">
+                    <br><label for="">IMAGEN:</label><input type="text" name="txturl" id="txturl">
+                    <br><input type="file" class="subirArchivo" id="imagenes"> <button id="btnImagen">Subir Imagen</button>                   
+                    <p id="mensajeEspecialidad"></p>
+
+                    <br>
+                    <button type="button" id="btnAgg">Agregar</button>
+                    <button type="button" id="btnBus">Buscar</button>
+                    <button type="button" id="btnAct">Actualizar</button>
+                    <button type="button" id="btnBorr">Eliminar</button>
+                    <button type="reset">Limpiar</button>
+                </form>
+                <table id="tablaEspecialidades">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Especialidad</th>
+                            <th>Ingredientes</th>
+                            <th>Imagen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (especialidades && especialidades.length > 0) { %>
+                            <% especialidades.forEach(especialidad => { %>
+                                <tr>
+                                    <td><%= especialidad.idEspecialidad %></td>
+                                    <td><%= especialidad.especialidad %></td>
+                                    <td><%= especialidad.ingredientes %></td>
+                                    <td><img src="<%= especialidad.urlimg %>" alt="Imagen" width="50"></td>
+                                </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="4">No hay especialidades registradas</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Adicionales -->
+            <div class="adicionales">
+                <h2>Adicionales</h2>
+                <form id="formularioAdicionales">
+                    <br><label for="">ID:</label><br><input type="text" name="txtId" id="IDadicional">
+                    <br><label for="">ADICIONAL:</label><input type="text" name="txt" id="txtAdicional">
+                    <br><label for="">PRECIO:</label><input type="text" name="txtIngredientes" id="Precio">
+                    <br><label for="">IMAGEN:</label><input type="text" name="txturl" id="txtURL">
+                    <br><input type="file" class="subirArchivo" id="imagenesAdicionales"> <button id="btnImage">Subir Imagen</button>
+                    <p id="mensajeAdicional"></p>
+                    <br>
+                    <button type="button" id="Agregar">Agregar</button>
+                    <button type="button" id="Buscar">Buscar</button>
+                    <button type="button" id="Actualizar">Actualizar</button>
+                    <button type="button" id="Borrar">Eliminar</button>
+                    <button type="reset">Limpiar</button>
+                </form>
+                <table id="tablaAdicionales">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Adicional</th>
+                            <th>Precio</th>
+                            <th>Imagen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (adicionales && adicionales.length > 0) { %>
+                            <% adicionales.forEach(adicional => { %>
+                                <tr>
+                                    <td><%= adicional.idAdicional %></td>
+                                    <td><%= adicional.adicional %></td>
+                                    <td>$<%= adicional.precio %></td>
+                                    <td><img src="<%= adicional.urlimag %>" alt="Imagen" width="50"></td>
+                                </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="4">No hay adicionales registrados</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Bebidas -->
+            <div class="bebidas">
+                <h2>Bebidas</h2>
+                <form id="formularioBebidas">
+                    <br><label for="">ID: </label><br><input type="text" name="txtId" id="idBebidas">
+                    <br><label for="">BEBIDAS:</label><input type="text" name="txt" id="txtBebidas">
+                    <br><label for="">PRECIO:</label><input type="text" name="Precio" id="PrecioBebidas">
+                    
+                    <p id="mensajeBebidas"></p>
+
+                    <br>
+                    <button type="button" id="AgregarBebida">Agregar</button>
+                    <button type="button" id="BuscarBebida">Buscar</button>
+                    <button type="button" id="ActualizarBebida">Actualizar</button>
+                    <button type="button" id="BorrarBebida">Eliminar</button>
+                    <button type="reset">Limpiar</button>
+                </form>
+                <table id="tablaBebidas">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Bebida</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (bebidas && bebidas.length > 0) { %>
+                            <% bebidas.forEach(bebida => { %>
+                                <tr>
+                                    <td><%= bebida.idBebida %></td>
+                                    <td><%= bebida.bebida %></td>
+                                    <td>$<%= bebida.precio %></td>
+                                </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="3">No hay bebidas registradas</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer id="pie">
+            <h4>Dirección: </h4>
+            <br>
+            <p>Avenida Camarón Sábalo #204 Local 10, Zona Dorada, Centro Comercial Lomas, C.P 82110</p>
+            <br>
+            <h4>Números de Contacto: </h4>
+            <br>
+            <p>(669) 913-90-00</p>
+            <br>
+            <p>(669) 269-98-26</p>
+            <br>
+            <a href="https://www.facebook.com/BROTPIZZA"><img src="/img/facebook.webp" alt=""></a>
+            <a href="https://www.instagram.com/brotherspizza_mzt/"><img src="/img/instagram-logo-instagram-icon-transparent-free-png.webp" alt=""></a>
+        </footer>
+    </div>
+    <script>
+        document.getElementById("btnBuscar").addEventListener("click", async () => {
+    const id = document.getElementById("txtID").value;
+
+    if (!id) {
+        alert("Por favor, ingresa un ID.");
+        return;
+    }
+
+    try {
+        // Realiza una solicitud GET al servidor para buscar la pizza por ID
+        const response = await fetch(`/pizzas/${id}`);
+        if (!response.ok) {
+            throw new Error("No se encontró la pizza con el ID proporcionado.");
+        }
+
+        const pizza = await response.json();
+
+        // Llena los inputs del formulario con los datos de la pizza
+        document.getElementById("txtTamaños").value = pizza.tamaños || "";
+        document.getElementById("txtUNO").value = pizza.uno || "";
+        document.getElementById("txtDOS").value = pizza.dos || "";
+        document.getElementById("txtCINCO").value = pizza.cinco || "";
+
+        document.getElementById("mensajePizzas").textContent = "Pizza encontrada.";
+    } catch (error) {
+        document.getElementById("mensajePizzas").textContent = error.message;
+    }
+});
+
+document.getElementById("btnAnadir").addEventListener("click", async () => {
+    const pizzaData = {
+        idPizzas: document.getElementById("txtID").value,
+        tamaños: document.getElementById("txtTamaños").value,
+        uno: document.getElementById("txtUNO").value,
+        dos: document.getElementById("txtDOS").value,
+        cinco: document.getElementById("txtCINCO").value
+    };
+
+    // Validación de campos vacíos
+    for (const key in pizzaData) {
+        if (!pizzaData[key]) {
+            document.getElementById("mensajePizzas").textContent = `Por favor, completa el campo ${key}.`;
+            return;
+        }
+    }
+
+    try {
+        const response = await fetch("/pizzas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(pizzaData)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Error al agregar la pizza.");
+        }
+
+        const result = await response.json();
+        document.getElementById("mensajePizzas").textContent = result.message;
+        document.getElementById("formularioPizzas").reset();
+
+        // Opcional: Actualizar la tabla después de agregar
+        location.reload();
+    } catch (error) {
+        document.getElementById("mensajePizzas").textContent = error.message;
+    }
+});
+
+document.getElementById("btnActualizar").addEventListener("click", async () => {    
+    const id = document.getElementById("txtID").value;
+    const tamaños = document.getElementById("txtTamaños").value;
+    const uno = document.getElementById("txtUNO").value;
+    const dos = document.getElementById("txtDOS").value;
+    const cinco = document.getElementById("txtCINCO").value;
+
+    const mensaje = document.getElementById("mensajePizzas");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    // Validar que todos los campos estén completos
+    if (!id || !tamaños || !uno || !dos || !cinco) {
+        mensaje.textContent = "Por favor, completa todos los campos.";
+        return;
+    }
+
+    try {
+        // Realizar la solicitud PUT al servidor
+        const response = await fetch(`/pizzas/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ tamaños, uno, dos, cinco })
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al actualizar la pizza.");
+        }
+
+        mensaje.textContent = "Pizza actualizada exitosamente.";
+        document.getElementById("formularioPizzas").reset(); // Limpiar formulario
+        location.reload();
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }
+});
+
+document.getElementById("btnBorrar").addEventListener("click", async () => {    
+    const id = document.getElementById("txtID").value;
+    const mensaje = document.getElementById("mensajePizzas");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    if (!id) {
+        mensaje.textContent = "Por favor, ingresa un ID.";
+        return;
+    }
+
+    try {
+        const response = await fetch(`/pizzas/${id}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al eliminar la pizza.");
+        }
+
+        mensaje.textContent = "Pizza eliminada exitosamente.";
+        document.getElementById("formularioPizzas").reset(); // Limpiar formulario
+        location.reload();
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }   
+});
+
+document.getElementById("btnAgg").addEventListener("click", async () => {
+    const especialidadData = {
+        idEspecialidad: document.getElementById("txtId").value,
+        especialidad: document.getElementById("txtEspecialidad").value,
+        ingredientes: document.getElementById("txtIngredientes").value,
+        urlimg: document.getElementById("txturl").value,
+    };
+
+    // Validación de campos vacíos
+    for (const key in especialidadData) {
+        if (!especialidadData[key]) {
+            document.getElementById("mensajeEspecialidad").textContent = `Por favor, completa el campo ${key}.`;
+            return;
+        }
+    }
+
+    try {
+        const response = await fetch("/especialidades", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(especialidadData)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Error al agregar la especialidad.");
+        }
+
+        const result = await response.json();
+        document.getElementById("mensajeEspecialidad").textContent = result.message;
+        document.getElementById("formularioEspecialidades").reset();
+
+        // Opcional: Actualizar la tabla después de agregar
+        location.reload();
+    } catch (error) {
+        document.getElementById("mensajeEspecialidad").textContent = error.message;
+    }
+});
+
+document.getElementById("btnImagen").addEventListener("click", async (e) => {
+    e.preventDefault(); // Evitar que el formulario se recargue
+
+    const inputFile = document.getElementById("imagenes");
+    const formData = new FormData();
+
+    if (inputFile.files.length === 0) {
+        alert("Por favor, selecciona una imagen.");
+        return;
+    }
+
+    formData.append("imagen", inputFile.files[0]); // Agregar la imagen al FormData
+
+    try {
+        const response = await fetch("/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al subir la imagen.");
+        }
+
+        const result = await response.json();
+        alert(result.message);
+
+        // Mostrar la URL de la imagen en el campo txtURL
+        document.getElementById("txturl").value = result.imageUrl;
+    } catch (error) {
+        alert(error.message);
+    }
+});
+
+document.getElementById("btnBus").addEventListener("click", async () => {
+    const id = document.getElementById("txtId").value;
+    
+    if (!id) {
+        alert("Por favor, ingresa un ID.");
+        return;
+    }
+
+    try {
+        // Realiza una solicitud GET al servidor para buscar la especialidad por ID
+        const response = await fetch(`/especialidades/${id}`);
+        if (!response.ok) {
+            throw new Error("No se encontró la especialidad con el ID proporcionado.");
+        }
+
+        const especialidad = await response.json();
+
+        // Llena los inputs del formulario con los datos de la especialidad
+        document.getElementById("txtEspecialidad").value = especialidad.especialidad || "";
+        document.getElementById("txtIngredientes").value = especialidad.ingredientes || "";
+        document.getElementById("txturl").value = especialidad.imagen || "";
+
+        document.getElementById("mensajeEspecialidad").textContent = "Especialidad encontrada.";
+    } catch (error) {
+        document.getElementById("mensajeEspecialidad").textContent = error.message;
+    }
+});
+
+document.getElementById("btnAct").addEventListener("click", async () => {    
+    const id = document.getElementById("txtId").value;
+    const especialidad = document.getElementById("txtEspecialidad").value;
+    const ingredientes = document.getElementById("txtIngredientes").value;
+    const urlimg = document.getElementById("txturl").value;
+
+    const mensaje = document.getElementById("mensajeEspecialidad");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    // Validar que todos los campos estén completos
+    if (!id || !especialidad || !ingredientes || !urlimg) {
+        mensaje.textContent = "Por favor, completa todos los campos.";
+        return;
+    }
+
+    try {
+        // Realizar la solicitud PUT al servidor
+        const response = await fetch(`/especialidades/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ especialidad, ingredientes, urlimg})
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al actualizar la especialidad.");
+        }
+
+        mensaje.textContent = "Especialidad actualizada exitosamente.";
+        document.getElementById("formularioEspecialidades").reset(); // Limpiar formulario
+        location.reload();
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }
+});
+
+document.getElementById("btnBorr").addEventListener("click", async () => {
+    const id = document.getElementById("txtId").value;
+    const mensaje = document.getElementById("mensajeEspecialidad");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    
+    if (!id) {
+        mensaje.textContent = "Por favor, ingresa un ID.";
+        return;
+    }
+
+    try {
+        const response = await fetch(`/especialidades/${id}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al eliminar la especialidad.");
+        }
+
+        mensaje.textContent = "Especialidad eliminada exitosamente.";
+        document.getElementById("formularioEspecialidades").reset(); // Limpiar formulario
+        location.reload();
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }
+});
+
+document.getElementById("Agregar").addEventListener("click", async () => {
+    const adicionalData = {
+        idAdicional: document.getElementById("IDadicional").value,
+        adicional: document.getElementById("txtAdicional").value,
+        precio: document.getElementById("Precio").value,
+        urlimag: document.getElementById("txtURL").value,
+    };
+
+    // Validación de campos vacíos
+    for (const key in adicionalData) {
+        if (!adicionalData[key]) {
+            document.getElementById("mensajeAdicional").textContent = `Por favor, completa el campo ${key}.`;
+            return;
+        }
+    }
+
+    try {
+        const response = await fetch("/adicionales", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(adicionalData)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Error al agregar el adicional.");
+        }
+
+        const result = await response.json();
+        document.getElementById("mensajeAdicional").textContent = result.message;
+        document.getElementById("formularioAdicionales").reset();
+
+        // Opcional: Actualizar la tabla después de agregar
+        location.reload();
+    } catch (error) {
+        document.getElementById("mensajeAdicional").textContent = error.message;
+    }
+});
+
+document.getElementById("btnImage").addEventListener("click", async (e) => {
+    e.preventDefault(); // Evitar que el formulario se recargue
+
+    const inputFile = document.getElementById("imagenesAdicionales");
+    const formData = new FormData();
+
+    if (inputFile.files.length === 0) {
+        alert("Por favor, selecciona una imagen.");
+        return;
+    }
+
+    formData.append("imagen", inputFile.files[0]); // Agregar la imagen al FormData
+
+    try {
+        const response = await fetch("/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al subir la imagen.");
+        }
+
+        const result = await response.json();
+        alert(result.message);
+
+        // Mostrar la URL de la imagen en el campo txtURL
+        document.getElementById("txtURL").value = result.imageUrl;
+    } catch (error) {
+        alert(error.message);
+    }
+});
+
+document.getElementById("Buscar").addEventListener("click", async () => {
+    const id = document.getElementById("IDadicional").value;
+
+    if (!id) {
+        alert("Por favor, ingresa un ID.");
+        return;
+    }
+
+    try {
+        // Realiza una solicitud GET al servidor para buscar el adicional por ID
+        const response = await fetch(`/adicionales/${id}`);
+        if (!response.ok) {
+            throw new Error("No se encontró el adicional con el ID proporcionado.");
+        }
+
+        const adicional = await response.json();
+
+        // Llena los inputs del formulario con los datos del adicional
+        document.getElementById("txtAdicional").value = adicional.adicional || "";
+        document.getElementById("Precio").value = adicional.precio || "";
+        document.getElementById("txtURL").value = adicional.imagen || "";
+
+        document.getElementById("mensajeAdicional").textContent = "Adicional encontrado.";
+    } catch (error) {
+        document.getElementById("mensajeAdicional").textContent = error.message;
+    }
+});
+document.getElementById("Actualizar").addEventListener("click", async () => {    
+    const id = document.getElementById("IDadicional").value;
+    const adicional = document.getElementById("txtAdicional").value;
+    const precio = document.getElementById("Precio").value;
+    const urlimag = document.getElementById("txtURL").value;
+
+    const mensaje = document.getElementById("mensajeAdicional");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    // Validar que todos los campos estén completos
+    if (!id || !adicional || !precio || !urlimag) {
+        mensaje.textContent = "Por favor, completa todos los campos.";
+        return;
+    }
+
+    try {
+        // Realizar la solicitud PUT al servidor
+        const response = await fetch(`/adicionales/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ adicional, precio, urlimag})
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al actualizar el adicional.");
+        }
+
+        mensaje.textContent = "Adicional actualizado exitosamente.";
+        document.getElementById("formularioAdicionales").reset(); // Limpiar formulario
+        location.reload();
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }
+});
+
+document.getElementById("Borrar").addEventListener("click", async () => {
+    const id = document.getElementById("IDadicional").value;
+    const mensaje = document.getElementById("mensajeAdicional");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    if (!id) {
+        mensaje.textContent = "Por favor, ingresa un ID.";
+        return;
+    }
+
+    try{
+        if (!id) {
+            mensaje.textContent = "Por favor, ingresa un ID.";
+            return;
+        }
+        const response = await fetch(`/adicionales/${id}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al eliminar el adicional.");
+        }
+
+        mensaje.textContent = "Adicional eliminado exitosamente.";
+        document.getElementById("formularioAdicionales").reset(); // Limpiar formulario
+        location.reload();
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }
+});
+
+document.getElementById("AgregarBebida").addEventListener("click", async () => {
+    const bebidaData = {
+        idBebida: document.getElementById("idBebidas").value,
+        bebida: document.getElementById("txtBebidas").value,
+        precio: document.getElementById("PrecioBebidas").value
+    };
+
+    // Validación de campos vacíos
+    for (const key in bebidaData) {
+        if (!bebidaData[key]) {
+            document.getElementById("mensajeBebidas").textContent = `Por favor, completa el campo ${key}.`;
+            return;
+        }
+    }
+
+    try {
+        const response = await fetch("/bebidas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(bebidaData)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Error al agregar la bebida.");
+        }
+
+        const result = await response.json();
+        document.getElementById("mensajeBebidas").textContent = result.message;
+        document.getElementById("formularioBebidas").reset();
+
+        // Opcional: Actualizar la tabla después de agregar
+        location.reload();
+    } catch (error) {
+        document.getElementById("mensajeBebidas").textContent = error.message;
+    }
+});
+
+document.getElementById("BuscarBebida").addEventListener("click", async () => {
+    const id = document.getElementById("idBebidas").value;
+    
+    if (!id) {
+        alert("Por favor, ingresa un ID.");
+        return;
+    }
+
+    try {
+        // Realiza una solicitud GET al servidor para buscar la bebida por ID
+        const response = await fetch(`/bebidas/${id}`);
+        if (!response.ok) {
+            throw new Error("No se encontró la bebida con el ID proporcionado.");
+        }
+
+        const bebida = await response.json();
+
+        // Llena los inputs del formulario con los datos de la bebida
+        document.getElementById("txtBebidas").value = bebida.bebida || "";
+        document.getElementById("PrecioBebidas").value = bebida.precio || "";
+
+        document.getElementById("mensajeBebidas").textContent = "Bebida encontrada.";
+    } catch (error) {
+        document.getElementById("mensajeBebidas").textContent = error.message;
+    }
+});
+document.getElementById("ActualizarBebida").addEventListener("click", async () => {
+    const id = document.getElementById("idBebidas").value;
+    const bebida = document.getElementById("txtBebidas").value;
+    const precio = document.getElementById("PrecioBebidas").value;
+
+    const mensaje = document.getElementById("mensajeBebidas");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    // Validar que todos los campos estén completos
+    if (!id || !bebida || !precio) {
+        mensaje.textContent = "Por favor, completa todos los campos.";
+        return;
+    }
+
+    try {
+        // Realizar la solicitud PUT al servidor
+        const response = await fetch(`/bebidas/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ bebida, precio })
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al actualizar la bebida.");
+        }
+
+        mensaje.textContent = "Bebida actualizada exitosamente.";
+        document.getElementById("formularioBebidas").reset(); // Limpiar formulario
+
+        location.reload();
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }
+});
+
+document.getElementById("BorrarBebida").addEventListener("click", async () => {
+    const id = document.getElementById("idBebidas").value;
+    const mensaje = document.getElementById("mensajeBebidas");
+    mensaje.textContent = ""; // Limpiar mensaje previo
+
+    if (!id) {
+        mensaje.textContent = "Por favor, ingresa un ID.";
+        return;
+    }
+
+    try {
+        const response = await fetch(`/bebidas/${id}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al eliminar la bebida.");
+        }
+
+        mensaje.textContent = "Bebida eliminada exitosamente.";
+        document.getElementById("formularioBebidas").reset(); // Limpiar formulario
+        location.reload();
+    } catch (error) {
+        mensaje.textContent = error.message;
+    }
+});
+
+document.getElementById("cerrarSesion").addEventListener("click", async () => {
+    try {
+        const response = await fetch("/admin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al cerrar sesión.");
+        }
+
+        alert("Sesión cerrada exitosamente.");
+        window.location.href = "/login"; // Redirige al login
+    } catch (error) {
+        alert(error.message);
+    }
+});
+    </script>
+</body>
+</html>

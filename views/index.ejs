@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+    <section>
+        <center>
+            <br>
+            <h3>Buscar Informacion del Alumno</h3>
+            <form id="formulario">
+                <select id="alumno">
+                    <option value="">Leer alumno</option>
+                </select>
+
+                <button type="submit" id="btnLeer">Leer</button>
+
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" readonly>
+                
+                <label for="domicilio">Domicilio</label>
+                <input type="text" id="domicilio" name="domicilio" readonly>
+                
+                <label for="edad">Edad</label>
+                <input type="text" id="edad" name="edad" readonly>
+                
+                <label for="sexo">Sexo</label>
+                <input type="text" id="sexo" name="sexo" readonly>
+            </form>
+        </center>
+    </section>
+
+    <script>
+        const nom = document.getElementById('nombre');
+        const dom = document.getElementById('domicilio');
+        const eda = document.getElementById('edad');
+        const sex = document.getElementById('sexo');
+        const btnLeer = document.getElementById('btnLeer');
+
+        btnLeer.addEventListener('click', leer);
+
+        function leer(){
+            fetch("http://localhost:3000/1")
+            .then(response => response.json())
+            .then(data => mostrar(data))
+            .catch(error => console.log("Error en la peticion", error));
+
+        }
+        function mostrar(data){
+            nom.value = data.nombre;
+            dom.value = data.domicilio;
+            eda.value = data.edad;
+            sex.value = data.sexo
+        }
+    </script>
+</body>
+</html>
