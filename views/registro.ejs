@@ -16,10 +16,13 @@
             <input type="email" id="correo" name="correo" required>
             <label for="contraseña">Contraseña:</label>
             <input type="password" id="contraseña" name="contraseña" required>
-            <button type="button" id="btnAgregarUsuario">Agregar Usuario</button>
+            <center>
+                <button type="button" id="btnAgregarUsuario">Agregar Usuario</button>
+            </center>
+
         </form>
         <p id="mensajeUsuario"></p>
-        <p>¿Ya tienes una cuenta?</p> <a href="/html/login.html">Iniciar sesion</a>
+        <p>¿Ya tienes una cuenta?</p> <a href="/login">Iniciar sesion</a>
       </section>
       <script>
         document.getElementById("btnAgregarUsuario").addEventListener("click", async () => {

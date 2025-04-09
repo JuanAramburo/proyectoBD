@@ -124,6 +124,15 @@ router.post("/admin", (req, res) => {
     });
 });
 
+router.get("/contacto", (req, res) => {
+    try {
+        res.render("contacto"); // Renderiza la vista contacto.ejs
+    } catch (error) {
+        console.error("Error al cargar la página de contacto:", error);
+        res.status(500).send("Error al cargar la página de contacto.");
+    }
+});
+
 router.get("/productos", (req, res) => {
     try {
         res.render("productos"); // Renderiza la vista productos.ejs

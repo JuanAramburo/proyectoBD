@@ -1,40 +1,31 @@
-section{
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 12px;
-    background-color: #f0f0f0;
+*{
+  padding: 0;
+  margin: 0;
 }
+
+body{
+  background-color: black;
+  font-family: 'Neue Aachen Pro', sans-serif;
+}
+
 .formulario-iniciosesion{
-  padding-top: 45px;
-  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 20px;
 }
-.formulario-crearcuenta{
-  padding-top: 45px;
-  padding-bottom: 60px;
+
+h1{
+  font-size: 48px;
 }
-.formulario-iniciosesion h1{
-text-align: center;
-padding-bottom: 12px;
-}
-.formulario-crearcuenta h1{
-  text-align: center;
-  padding-bottom: 12px;
-  }
-.formulario-iniciosesion a {
-  display: block;
-  text-align: center; /* Añade esta propiedad para alinear el enlace al centro */
-  margin-top: 20px;
-  color: #555;
-}
-.formulario-crearcuenta a {
-  display: block;
-  text-align: center; /* Añade esta propiedad para alinear el enlace al centro */
-  margin-top: 20px;
-  color: #555;
-}
-/* Estilos para el formulario */
-form {
-  max-width: 400px;
-  margin: 0 auto;
+
+#formulario-sesion{
+  max-width: 500px;
+  margin: 20px;
   padding: 20px;
   background-color: #f1f1f1;
   border-radius: 10px;
@@ -42,8 +33,11 @@ form {
   height: 320px;
 }
 
-/* Estilos para los campos de entrada */
-input[type=email], input[type=password] {
+label{
+  font-size: 24px;
+}
+
+input{
   width: 100%;
   padding: 10px;
   margin: 8px 0;
@@ -53,19 +47,35 @@ input[type=email], input[type=password] {
   border-radius: 5px;
 }
 
-/* Estilos para el botón de envío */
-input[type=submit] {
-  background-color: #007bff;
+button{
+  font-family: 'Neue Aachen Pro', sans-serif;
+  background-color: black;
   color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+  margin: 10px;
+  padding: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  float: right;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
 }
 
-/* Estilos para el botón de envío al pasar el ratón por encima */
-input[type=submit]:hover {
-  background-color: #0372e9;
+button:hover{
+  background-color: white;
+  color: black;
+  transform: scale(1.10);
+  transition: .3s;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  margin: 20px;
+  padding: 20px;
+}
+
+a:hover{
+  color: white;
+  font-size: 18px;
+  transition: .2s;
 }
