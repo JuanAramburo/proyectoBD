@@ -8,10 +8,10 @@ import { deflate } from "zlib";
 
 //configuracion 
 var conexion = mysql.createConnection({
-    host:"bz16lrn1yipemys13fow-mysql.services.clever-cloud.com",
-    user:"ufzettsbb7j1qr4h",
-    password:"3GaFuYLswd3itp4kG9dY",
-    database:"bz16lrn1yipemys13fow"
+    host:"52.15.227.168",
+    user:"root",
+    password:"upsin123",
+    database:"brothers"
 
 })
 

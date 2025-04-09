@@ -41,23 +41,18 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
-
         console.log("Datos recibidos para login:", { email, password }); // Depuración
 
-        // Validar que los campos no estén vacíos
-        if (!email || !password) {
-            return res.status(400).json({ error: "Todos los campos son requeridos." });
-        }
-
-        // Verificar las credenciales en la base de datos
         const usuario = await brothersDB.buscarUsuarioPorCorreo(email);
+        console.log("Usuario encontrado:", usuario); // Depuración
 
         if (!usuario || usuario.contraseña !== password) {
+            console.log("Credenciales incorrectas"); // Depuración
             return res.status(401).json({ error: "Credenciales incorrectas." });
         }
 
-        // Guardar el usuario en la sesión
         req.session.usuario = { id: usuario.idUsuario, correo: usuario.correo };
+        console.log("Sesión iniciada:", req.session.usuario); // Depuración
 
         res.status(200).json({ message: "Inicio de sesión exitoso." });
     } catch (error) {
@@ -94,11 +89,13 @@ router.post("/registro", async (req, res) => {
     }
 });
 
-
 function verificarSesion(req, res, next) {
+    console.log("Sesión actual:", req.session); // Depuración
     if (req.session && req.session.usuario) {
+        console.log("Usuario autenticado:", req.session.usuario); // Depuración
         next(); // El usuario está autenticado, continúa
     } else {
+        console.log("Usuario no autenticado, redirigiendo a /login"); // Depuración
         res.redirect("/login"); // Redirige al login si no está autenticado
     }
 }

@@ -234,7 +234,7 @@
 
     try {
         // Realiza una solicitud GET al servidor para buscar la pizza por ID
-        const response = await fetch(`http://52.15.227.168:3000/pizzas/${id}`);
+        const response = await fetch(`/pizzas/${id}`);
         if (!response.ok) {
             throw new Error("No se encontró la pizza con el ID proporcionado.");
         }
@@ -271,7 +271,7 @@ document.getElementById("btnAnadir").addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch("http://52.15.227.168:3000/pizzas", {
+        const response = await fetch("/pizzas", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -313,7 +313,7 @@ document.getElementById("btnActualizar").addEventListener("click", async () => {
 
     try {
         // Realizar la solicitud PUT al servidor
-        const response = await fetch(`http://52.15.227.168:3000/pizzas/${id}`, {
+        const response = await fetch(`/pizzas/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -344,7 +344,7 @@ document.getElementById("btnBorrar").addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch(`http://52.15.227.168:3000/pizzas/${id}`, {
+        const response = await fetch(`/pizzas/${id}`, {
             method: "DELETE"
         });
 
@@ -377,7 +377,7 @@ document.getElementById("btnAgg").addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch("http://52.15.227.168:3000/especialidades", {
+        const response = await fetch("/especialidades", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -415,7 +415,7 @@ document.getElementById("btnImagen").addEventListener("click", async (e) => {
     formData.append("imagen", inputFile.files[0]); // Agregar la imagen al FormData
 
     try {
-        const response = await fetch("http://52.15.227.168:3000/upload", {
+        const response = await fetch("/upload", {
             method: "POST",
             body: formData
         });
@@ -444,7 +444,7 @@ document.getElementById("btnBus").addEventListener("click", async () => {
 
     try {
         // Realiza una solicitud GET al servidor para buscar la especialidad por ID
-        const response = await fetch(`http://52.15.227.168:3000/especialidades/${id}`);
+        const response = await fetch(`/especialidades/${id}`);
         if (!response.ok) {
             throw new Error("No se encontró la especialidad con el ID proporcionado.");
         }
@@ -479,7 +479,7 @@ document.getElementById("btnAct").addEventListener("click", async () => {
 
     try {
         // Realizar la solicitud PUT al servidor
-        const response = await fetch(`http://52.15.227.168:3000/especialidades/${id}`, {
+        const response = await fetch(`/especialidades/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -511,7 +511,7 @@ document.getElementById("btnBorr").addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch(`http://52.15.227.168:3000/especialidades/${id}`, {
+        const response = await fetch(`/especialidades/${id}`, {
             method: "DELETE"
         });
 
@@ -544,7 +544,7 @@ document.getElementById("Agregar").addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch("http://52.15.227.168:3000/adicionales", {
+        const response = await fetch("/adicionales", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -582,7 +582,7 @@ document.getElementById("btnImage").addEventListener("click", async (e) => {
     formData.append("imagen", inputFile.files[0]); // Agregar la imagen al FormData
 
     try {
-        const response = await fetch("http://52.15.227.168:3000/upload", {
+        const response = await fetch("/upload", {
             method: "POST",
             body: formData
         });
@@ -645,7 +645,7 @@ document.getElementById("Actualizar").addEventListener("click", async () => {
 
     try {
         // Realizar la solicitud PUT al servidor
-        const response = await fetch(`http://52.15.227.168:3000/adicionales/${id}`, {
+        const response = await fetch(`/adicionales/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -680,7 +680,7 @@ document.getElementById("Borrar").addEventListener("click", async () => {
             mensaje.textContent = "Por favor, ingresa un ID.";
             return;
         }
-        const response = await fetch(`http://52.15.227.168:3000/adicionales/${id}`, {
+        const response = await fetch(`/adicionales/${id}`, {
             method: "DELETE"
         });
 
@@ -712,7 +712,7 @@ document.getElementById("AgregarBebida").addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch("http://52.15.227.168:3000/bebidas", {
+        const response = await fetch("/bebidas", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -746,7 +746,7 @@ document.getElementById("BuscarBebida").addEventListener("click", async () => {
 
     try {
         // Realiza una solicitud GET al servidor para buscar la bebida por ID
-        const response = await fetch(`http://52.15.227.168:3000/bebidas/${id}`);
+        const response = await fetch(`/bebidas/${id}`);
         if (!response.ok) {
             throw new Error("No se encontró la bebida con el ID proporcionado.");
         }
@@ -778,7 +778,7 @@ document.getElementById("ActualizarBebida").addEventListener("click", async () =
 
     try {
         // Realizar la solicitud PUT al servidor
-        const response = await fetch(`http://52.15.227.168:3000/bebidas/${id}`, {
+        const response = await fetch(`/bebidas/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -810,7 +810,7 @@ document.getElementById("BorrarBebida").addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch(`http://52.15.227.168:3000/bebidas/${id}`, {
+        const response = await fetch(`/bebidas/${id}`, {
             method: "DELETE"
         });
 
@@ -828,7 +828,7 @@ document.getElementById("BorrarBebida").addEventListener("click", async () => {
 
 document.getElementById("cerrarSesion").addEventListener("click", async () => {
     try {
-        const response = await fetch("http://52.15.227.168:3000/admin", {
+        const response = await fetch("/admin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
