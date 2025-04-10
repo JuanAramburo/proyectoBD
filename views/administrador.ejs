@@ -454,7 +454,7 @@ document.getElementById("btnBus").addEventListener("click", async () => {
         // Llena los inputs del formulario con los datos de la especialidad
         document.getElementById("txtEspecialidad").value = especialidad.especialidad || "";
         document.getElementById("txtIngredientes").value = especialidad.ingredientes || "";
-        document.getElementById("txturl").value = especialidad.imagen || "";
+        document.getElementById("txturl").value = especialidad.urlimg || "";
 
         document.getElementById("mensajeEspecialidad").textContent = "Especialidad encontrada.";
     } catch (error) {
@@ -621,7 +621,7 @@ document.getElementById("Buscar").addEventListener("click", async () => {
         // Llena los inputs del formulario con los datos del adicional
         document.getElementById("txtAdicional").value = adicional.adicional || "";
         document.getElementById("Precio").value = adicional.precio || "";
-        document.getElementById("txtURL").value = adicional.imagen || "";
+        document.getElementById("txtURL").value = adicional.urlimag || "";
 
         document.getElementById("mensajeAdicional").textContent = "Adicional encontrado.";
     } catch (error) {
